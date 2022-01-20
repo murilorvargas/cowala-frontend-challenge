@@ -1,9 +1,20 @@
+import Head from 'next/head';
 import React from 'react';
 
-// import { Container } from './styles';
+import Form from '../components/Form';
+import Container from '../styles/pages/Home';
 
 const pages: React.FC = () => {
-  return <h1>App</h1>;
+  return (
+    <>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <Container>
+        <Form />
+      </Container>
+    </>
+  );
 };
 
 export default pages;
