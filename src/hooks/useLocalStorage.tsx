@@ -39,7 +39,7 @@ export const LocalStorageProvider = ({
   };
 
   const clearLocalStorage = () => {
-    setUserData(null);
+    setUserData(undefined);
     localStorage.removeItem('user');
   };
 
