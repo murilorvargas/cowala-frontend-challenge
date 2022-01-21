@@ -1,5 +1,5 @@
 {
-  "name": "cowala_challenge",
+  "name": "cowala-frontend-challenge",
   "private": true,
   "scripts": {
     "dev": "next dev",
