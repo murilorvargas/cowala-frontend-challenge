@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import InputMask from 'react-input-mask';
 import * as yup from 'yup';
 
 import { LocalStorageData } from '../../hooks/useLocalStorage';
@@ -85,10 +86,11 @@ const Form = ({
         </div>
         <div>
           <label htmlFor="number">Celular</label>
-          <input
-            type="text"
+          <InputMask
+            type="tel"
             id="number"
             name="number"
+            mask="(99) 99999-9999"
             placeholder="Digite seu número de celular"
             className={errors.number && 'error'}
             {...register('number')}
