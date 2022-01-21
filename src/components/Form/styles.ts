@@ -17,6 +17,15 @@ const Container = styled.form`
     > input {
       height: 44px;
       padding: 14px 12px;
+
+      &.error {
+        border: 2px solid ${props => props.theme.colors.red500};
+      }
+    }
+
+    > span {
+      font-size: 1.2rem;
+      color: ${props => props.theme.colors.red500};
     }
   }
 
@@ -33,6 +42,15 @@ const Container = styled.form`
       > input {
         height: 44px;
         padding: 14px 12px;
+
+        &.error {
+          border: 2px solid ${props => props.theme.colors.red500};
+        }
+      }
+
+      > span {
+        font-size: 1.2rem;
+        color: ${props => props.theme.colors.red500};
       }
     }
 
@@ -44,6 +62,15 @@ const Container = styled.form`
       > input {
         height: 44px;
         padding: 14px 12px;
+
+        &.error {
+          border: 2px solid ${props => props.theme.colors.red500};
+        }
+      }
+
+      > span {
+        font-size: 1.2rem;
+        color: ${props => props.theme.colors.red500};
       }
     }
   }
@@ -62,6 +89,19 @@ const Container = styled.form`
       > input {
         height: 44px;
         padding: 14px 12px;
+
+        &:disabled {
+          color: ${props => props.theme.colors.black};
+        }
+
+        &.error {
+          border: 2px solid ${props => props.theme.colors.red500};
+        }
+      }
+
+      > span {
+        font-size: 1.2rem;
+        color: ${props => props.theme.colors.red500};
       }
     }
 
