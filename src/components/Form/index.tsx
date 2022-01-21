@@ -3,8 +3,15 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
+import { LocalStorageData } from '../../hooks/useLocalStorage';
 import api from '../../services/api';
 import Container from './styles';
+
+type FormProps = {
+  createLocalStorage: (data: LocalStorageData) => void;
+  clearLocalStorage: () => void;
+  userData: LocalStorageData;
+};
 
 type userFormData = {
   name: string;
@@ -20,7 +27,11 @@ const userFormSchema = yup.object().shape({
   ip: yup.string().required(),
 });
 
-const Form: React.FC = () => {
+const Form = ({
+  createLocalStorage,
+  clearLocalStorage,
+  userData,
+}: FormProps) => {
   const {
     register,
     handleSubmit,
@@ -30,7 +41,13 @@ const Form: React.FC = () => {
     clearErrors,
   } = useForm({
     resolver: yupResolver(userFormSchema),
+    defaultValues: userData,
   });
+
+  const handleClearData = () => {
+    reset();
+    clearLocalStorage();
+  };
 
   const handleFetchIp = async () => {
     await api.get('api/ip').then(response => setValue('ip', response.data));
@@ -38,8 +55,7 @@ const Form: React.FC = () => {
   };
 
   const onSubmit: SubmitHandler<userFormData> = values => {
-    console.log(values);
-    reset();
+    createLocalStorage(values);
   };
 
   return (
@@ -97,7 +113,9 @@ const Form: React.FC = () => {
       </div>
       <div>
         <button type="submit">SALVAR</button>
-        <button type="button">LIMPAR</button>
+        <button type="button" onClick={handleClearData}>
+          LIMPAR
+        </button>
       </div>
     </Container>
   );
