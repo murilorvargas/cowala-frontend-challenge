@@ -35,7 +35,7 @@ export const LocalStorageProvider = ({
 
   const createLocalStorage = (data: LocalStorageData) => {
     localStorage.setItem('user', JSON.stringify(data));
-    setUserData(userData);
+    setUserData(data);
   };
 
   const clearLocalStorage = () => {
