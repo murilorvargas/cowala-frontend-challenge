@@ -41,12 +41,12 @@ const Form = ({
     clearErrors,
   } = useForm({
     resolver: yupResolver(userFormSchema),
-    defaultValues: userData,
+    defaultValues: !!userData && userData,
   });
 
   const handleClearData = () => {
-    reset();
     clearLocalStorage();
+    reset({ name: '', profession: '', number: '', ip: '' });
   };
 
   const handleFetchIp = async () => {
@@ -59,7 +59,7 @@ const Form = ({
   };
 
   return (
-    <Container onSubmit={handleSubmit(onSubmit)}>
+    <Container onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <div>
         <label htmlFor="name">Nome</label>
         <input
